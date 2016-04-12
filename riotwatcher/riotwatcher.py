@@ -248,11 +248,12 @@ class RateLimit:
 
 
 class RiotWatcher:
-    def __init__(self, key, default_region=NORTH_AMERICA, limits=(RateLimit(10, 10), RateLimit(500, 600), ), blocking=False):
+    def __init__(self, key, default_region=NORTH_AMERICA, limits=(RateLimit(10, 10), RateLimit(500, 600), ), blocking=False, logger=None):
         self.key = key  #If you have a production key, use limits=(RateLimit(3000,10), RateLimit(180000,600),)
         self.default_region = default_region
         self.limits = limits
         self.blocking = blocking
+        self.logger = logger
 
     def can_make_request(self):
         for lim in self.limits:
@@ -285,6 +286,9 @@ class RiotWatcher:
             ),
             params=args
         )
+        if self.logger:
+            self.logger.debug(r.url)
+
         if not static:
             for lim in self.limits:
                 lim.add_request()
