@@ -286,6 +286,7 @@ class RiotWatcher:
             ),
             params=args
         )
+        print r.url
         if self.logger:
             self.logger.debug(r.url)
 
