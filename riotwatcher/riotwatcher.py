@@ -276,7 +276,12 @@ class RiotWatcher:
         args = {'api_key': self.key}
         for k in kwargs:
             if kwargs[k] is not None:
-                args[k] = kwargs[k]
+                if kwargs[k] is True:
+                    args[k] = "true"
+                elif kwargs[k] is False:
+                    args[k] = "false"
+                else:
+                    args[k] = kwargs[k]
         if not static:
             if self.blocking:
                 self.wait_for_limits()
@@ -524,7 +529,7 @@ class RiotWatcher:
                 end_url=end_url
             ),
             region,
-            **dict((k.lower(), v.lower()) for k,v in kwargs.iteritems())
+            **kwargs
         )
 
     def get_match(self, match_id, region=None, include_timeline=False):
