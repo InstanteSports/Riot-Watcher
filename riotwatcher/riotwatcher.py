@@ -1,6 +1,7 @@
 from collections import deque
 import time
 import requests
+from __future__ import unicode_literals
 
 # Constants
 BRAZIL = u'br'
@@ -13,6 +14,7 @@ NORTH_AMERICA = u'na'
 OCEANIA = u'oce'
 RUSSIA = u'ru'
 TURKEY = u'tr'
+JAPAN = u'jp'
 
 # Platforms
 platforms = {
@@ -25,7 +27,8 @@ platforms = {
     NORTH_AMERICA: u'NA1',
     OCEANIA: u'OC1',
     RUSSIA: u'RU',
-    TURKEY: u'TR1'
+    TURKEY: u'TR1',
+    JAPAN: u'JP1',
 }
 
 queue_types = [
