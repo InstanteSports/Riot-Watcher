@@ -524,7 +524,7 @@ class RiotWatcher:
                 end_url=end_url
             ),
             region,
-            **kwargs
+            **dict((k.lower(), v.lower()) for k,v in kwargs.iteritems())
         )
 
     def get_match(self, match_id, region=None, include_timeline=False):
