@@ -1,7 +1,7 @@
+from __future__ import unicode_literals
 from collections import deque
 import time
 import requests
-from __future__ import unicode_literals
 
 # Constants
 BRAZIL = u'br'
